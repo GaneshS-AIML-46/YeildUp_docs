@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YieldUP — Digital Krishi Officer</title>
+  <meta name="description" content="YieldUP portfolio: AI-powered agricultural advisory for Kerala farmers — voice, vision, and RAG.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="progress-bar" aria-hidden="true">
+    <div class="progress-bar__fill" id="progressFill"></div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__brand">
+      <span class="site-header__logo">YieldUP</span>
+      <span class="site-header__tag">Digital Krishi Officer</span>
+    </div>
+    <nav class="site-nav" aria-label="Interview sections">
+      <ol class="site-nav__list">
+        <li><a href="#hero" data-section="hero"><span class="site-nav__num">1</span> Hero</a></li>
+        <li><a href="#objective" data-section="objective"><span class="site-nav__num">2</span> Objective</a></li>
+        <li><a href="#architecture" data-section="architecture"><span class="site-nav__num">3</span> Architecture</a></li>
+        <li><a href="#features" data-section="features"><span class="site-nav__num">4</span> Features</a></li>
+        <li><a href="#workflows" data-section="workflows"><span class="site-nav__num">5</span> Workflows</a></li>
+        <li><a href="#demo" data-section="demo"><span class="site-nav__num">6</span> Demo</a></li>
+        <li><a href="#challenges" data-section="challenges"><span class="site-nav__num">7</span> Challenges</a></li>
+        <li><a href="#analytics" data-section="analytics"><span class="site-nav__num">8</span> Cost</a></li>
+      </ol>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteHeader">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- Section 1: Hero -->
+    <section id="hero" class="section section--hero reveal">
+      <div class="section__inner">
+        <p class="eyebrow">Portfolio</p>
+        <h1 class="hero__title">YieldUP</h1>
+        <p class="hero__subtitle">Digital Krishi Officer for Kerala farmers — real-time, context-aware agricultural advice in Malayalam via voice, text, and image.</p>
+        <div class="stack-chips" role="list" aria-label="Technology stack">
+          <span class="chip" role="listitem">Android / Compose</span>
+          <span class="chip" role="listitem">FastAPI</span>
+          <span class="chip" role="listitem">PostgreSQL</span>
+          <span class="chip" role="listitem">Qdrant</span>
+          <span class="chip" role="listitem">Local LLM</span>
+          <span class="chip" role="listitem">IndicSeamless ASR</span>
+        </div>
+        <div class="hero__cta">
+          <a href="#architecture" class="btn btn--primary">See architecture</a>
+          <a href="#demo" class="btn btn--ghost">Watch demo</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+        <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+        <div class="hero__field" aria-hidden="true"></div>
+        <img
+          src="assets/yieldup-logo.svg"
+          alt="YieldUP — Digital Krishi Officer app logo with Kerala farming landscape"
+          class="hero__logo"
+          width="400"
+          height="400"
+          loading="eager"
+        >
+      </div>
+    </section>
+
+    <!-- Section 2: Objective -->
+    <section id="objective" class="section reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">02</span>
+          <h2>Objective</h2>
+        </header>
+
+        <div class="objective-flow">
+          <article class="objective-card objective-card--problem">
+            <h3>Problem</h3>
+            <p>Farmers in Kerala face literacy barriers, limited Malayalam-first tools, and delayed access to certified agricultural advice — especially for crop disease, seasonal planting, and market timing.</p>
+          </article>
+          <div class="objective-arrow" aria-hidden="true">→</div>
+          <article class="objective-card objective-card--solution">
+            <h3>Solution</h3>
+            <p>YieldUP is a multimodal AI advisory platform: speak in Malayalam, snap a crop photo, or type a query — get localized, context-aware guidance with escalation to human officers when needed.</p>
+          </article>
+        </div>
+
+        <div class="stakeholders">
+          <h3 class="stakeholders__title">Three stakeholders</h3>
+          <div class="stakeholders__grid">
+            <article class="stakeholder">
+              <span class="stakeholder__icon" aria-hidden="true">🌾</span>
+              <h4>Farmer</h4>
+              <p>Voice-first queries in Malayalam, disease diagnosis from camera, regional crop and weather context.</p>
+            </article>
+            <article class="stakeholder">
+              <span class="stakeholder__icon" aria-hidden="true">👨‍🌾</span>
+              <h4>Agri Officer</h4>
+              <p>Dashboard for escalations, expert responses, and monitoring complex cases the AI cannot resolve.</p>
+            </article>
+            <article class="stakeholder">
+              <span class="stakeholder__icon" aria-hidden="true">📊</span>
+              <h4>System / Ops</h4>
+              <p>Docker-orchestrated services, Prometheus/Grafana observability, feedback loop for continuous model improvement.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Architecture -->
+    <section id="architecture" class="section section--arch reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">03</span>
+          <h2>Architecture</h2>
+        </header>
+
+        <div class="arch-toggle" role="tablist" aria-label="Architecture version">
+          <button class="arch-toggle__btn" role="tab" id="tab-v1" aria-selected="false" aria-controls="diagram-v1" data-arch="v1">v1 — Earlier design</button>
+          <button class="arch-toggle__btn arch-toggle__btn--active" role="tab" id="tab-improved" aria-selected="true" aria-controls="diagram-improved" data-arch="improved">Improved — Current platform</button>
+        </div>
+
+        <!-- v1 Diagram -->
+        <div class="arch-diagram" id="diagram-v1" role="tabpanel" aria-labelledby="tab-v1" hidden>
+          <p class="arch-diagram__label">Earlier design (from original README)</p>
+          <div class="diagram">
+            <div class="diagram__row diagram__row--clients">
+              <div class="node node--client node--pulse">
+                <span class="node__title">Farmer App</span>
+                <span class="node__sub">React Native</span>
+              </div>
+              <div class="node node--client">
+                <span class="node__title">Officer Dashboard</span>
+                <span class="node__sub">React.js</span>
+              </div>
+            </div>
+            <div class="diagram__connector" aria-hidden="true">
+              <svg viewBox="0 0 400 40" preserveAspectRatio="none"><path d="M80 0 L80 20 L200 20 L200 40 M320 0 L320 20 L200 20" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>
+            </div>
+            <div class="diagram__row">
+              <div class="node node--api node--pulse">
+                <span class="node__title">FastAPI Backend</span>
+                <span class="node__sub">REST · LangChain RAG</span>
+              </div>
+            </div>
+            <div class="diagram__connector diagram__connector--down" aria-hidden="true">
+              <svg viewBox="0 0 400 40" preserveAspectRatio="none"><path d="M200 0 L200 40" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <div class="diagram__row diagram__row--data">
+              <div class="node node--db">
+                <span class="node__title">PostgreSQL</span>
+                <span class="node__sub">Structured data</span>
+              </div>
+              <div class="node node--db">
+                <span class="node__title">MongoDB</span>
+                <span class="node__sub">Chat &amp; context</span>
+              </div>
+            </div>
+            <div class="diagram__row diagram__row--ai">
+              <div class="node node--ai node--dashed">
+                <span class="node__title">ASRSeamless</span>
+                <span class="node__sub">Speech-to-text</span>
+              </div>
+              <div class="node node--ai node--dashed">
+                <span class="node__title">EfficientNet</span>
+                <span class="node__sub">Disease detection</span>
+              </div>
+              <div class="node node--ai node--dashed node--external">
+                <span class="node__title">Google Gemini</span>
+                <span class="node__sub">Cloud LLM + RAG</span>
+              </div>
+            </div>
+          </div>
+          <ul class="arch-notes">
+            <li>Cloud-dependent LLM (Gemini) — higher cost &amp; privacy trade-offs</li>
+            <li>Cross-platform RN app; officer dashboard in React</li>
+            <li>LangChain RAG over agricultural knowledge bases</li>
+          </ul>
+        </div>
+
+        <!-- Improved Diagram -->
+        <div class="arch-diagram arch-diagram--active" id="diagram-improved" role="tabpanel" aria-labelledby="tab-improved">
+          <p class="arch-diagram__label">Improved platform (current design)</p>
+          <div class="diagram">
+            <div class="diagram__row diagram__row--clients">
+              <div class="node node--client node--pulse">
+                <span class="node__title">Android App</span>
+                <span class="node__sub">Kotlin · Jetpack Compose</span>
+              </div>
+            </div>
+            <div class="diagram__connector" aria-hidden="true">
+              <svg viewBox="0 0 400 40" preserveAspectRatio="none"><path d="M200 0 L200 40" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <div class="diagram__row">
+              <div class="node node--api node--pulse">
+                <span class="node__title">FastAPI</span>
+                <span class="node__sub">JWT · Auth · AI orchestration</span>
+              </div>
+            </div>
+            <div class="diagram__connector diagram__connector--fan" aria-hidden="true">
+              <svg viewBox="0 0 600 50" preserveAspectRatio="none"><path d="M300 0 L300 25 M100 25 L300 25 L300 50 M200 25 L200 50 M300 25 L300 50 M400 25 L400 50 M500 25 L300 25" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <div class="diagram__row diagram__row--data">
+              <div class="node node--db">
+                <span class="node__title">PostgreSQL 16</span>
+                <span class="node__sub">Accounts · schemes</span>
+              </div>
+              <div class="node node--db">
+                <span class="node__title">MongoDB</span>
+                <span class="node__sub">Chat · escalations</span>
+              </div>
+              <div class="node node--db">
+                <span class="node__title">Qdrant</span>
+                <span class="node__sub">RAG vectors</span>
+              </div>
+              <div class="node node--db">
+                <span class="node__title">Redis</span>
+                <span class="node__sub">Cache · Celery</span>
+              </div>
+            </div>
+            <div class="diagram__row diagram__row--ai">
+              <div class="node node--ai node--dashed node--pulse">
+                <span class="node__title">YOLOv11n</span>
+                <span class="node__sub">Crop disease CV</span>
+              </div>
+              <div class="node node--ai node--dashed node--pulse">
+                <span class="node__title">Qwen3-8B</span>
+                <span class="node__sub">Local LLM + RAG</span>
+              </div>
+              <div class="node node--ai node--dashed">
+                <span class="node__title">Whisper + Piper</span>
+                <span class="node__sub">STT · TTS</span>
+              </div>
+            </div>
+            <div class="diagram__row diagram__row--ops">
+              <div class="node node--ops node--dashed">
+                <span class="node__title">Docker Compose</span>
+                <span class="node__sub">~10 services</span>
+              </div>
+              <div class="node node--ops node--dashed">
+                <span class="node__title">Prometheus + Grafana</span>
+                <span class="node__sub">Observability</span>
+              </div>
+            </div>
+          </div>
+          <ul class="arch-notes">
+            <li>Local Qwen3-8B via Ollama — zero per-token API cost, data stays on-prem</li>
+            <li>Qdrant stores ICAR/KVK document embeddings for semantic RAG</li>
+            <li>Native Android for camera, mic, and offline-capable edge inference</li>
+          </ul>
+        </div>
+
+        <aside class="repo-honesty">
+          <strong>In this repository today:</strong>
+          IndicSeamless FastAPI transcription service (<code>ASR_con/</code>), working Jupyter notebooks, and demo video.
+          The improved diagram is the documented platform architecture; ASR is the shipped Malayalam speech slice.
+        </aside>
+      </div>
+    </section>
+
+    <!-- Section 4: Features -->
+    <section id="features" class="section reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">04</span>
+          <h2>Features</h2>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">🎙</span>
+            <h3>Malayalam Voice I/O</h3>
+            <p>IndicSeamless STT with noise reduction and 10s chunking; Piper TTS for natural spoken responses — no cloud speech APIs.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">📷</span>
+            <h3>Crop Disease Detection</h3>
+            <p>YOLOv11n nano model for real-time disease classification from farmer-uploaded crop images with minimal compute footprint.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">🧠</span>
+            <h3>RAG Advisory</h3>
+            <p>Qdrant vector search over ICAR/KVK research docs + local Qwen3-8B for accurate, localized agricultural Q&amp;A.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">📈</span>
+            <h3>Market &amp; Planting Recs</h3>
+            <p>scikit-learn / XGBoost engine synthesizes weather, crop history, and market signals with SHAP explainability.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">🚨</span>
+            <h3>Officer Escalation</h3>
+            <p>Complex queries route to human agri-officers via dashboard; MongoDB stores escalation tickets and expert responses.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">📡</span>
+            <h3>Observability</h3>
+            <p>Prometheus scrapes GPU/CPU/memory/API latency; Grafana dashboards monitor the full Krishi ecosystem health.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Workflows -->
+    <section id="workflows" class="section reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">05</span>
+          <h2>Workflows</h2>
+        </header>
+
+        <div class="workflow-tabs" role="tablist" aria-label="User journeys">
+          <button class="workflow-tab workflow-tab--active" role="tab" id="wf-voice" aria-selected="true" aria-controls="panel-voice" data-workflow="voice">Voice query loop</button>
+          <button class="workflow-tab" role="tab" id="wf-disease" aria-selected="false" aria-controls="panel-disease" data-workflow="disease">Image disease diagnose</button>
+          <button class="workflow-tab" role="tab" id="wf-escalate" aria-selected="false" aria-controls="panel-escalate" data-workflow="escalate">Escalate to officer</button>
+        </div>
+
+        <div class="workflow-panel workflow-panel--active" id="panel-voice" role="tabpanel" aria-labelledby="wf-voice">
+          <ol class="workflow-steps">
+            <li><span class="step-num">1</span> Farmer speaks in Malayalam on Android app</li>
+            <li><span class="step-num">2</span> Audio sent to FastAPI → IndicSeamless transcribes (denoise + 10s chunks)</li>
+            <li><span class="step-num">3</span> Text query hits RAG pipeline: Qdrant retrieves ICAR/KVK context</li>
+            <li><span class="step-num">4</span> Local Qwen3-8B generates localized advice</li>
+            <li><span class="step-num">5</span> Piper TTS speaks response back to farmer</li>
+          </ol>
+        </div>
+
+        <div class="workflow-panel" id="panel-disease" role="tabpanel" aria-labelledby="wf-disease" hidden>
+          <ol class="workflow-steps">
+            <li><span class="step-num">1</span> Farmer photographs affected crop leaf or soil</li>
+            <li><span class="step-num">2</span> Image uploaded via FastAPI multipart endpoint</li>
+            <li><span class="step-num">3</span> YOLOv11n classifies disease type in real time</li>
+            <li><span class="step-num">4</span> RAG enriches diagnosis with treatment docs from Qdrant</li>
+            <li><span class="step-num">5</span> Actionable remedy returned in Malayalam (voice or text)</li>
+          </ol>
+        </div>
+
+        <div class="workflow-panel" id="panel-escalate" role="tabpanel" aria-labelledby="wf-escalate" hidden>
+          <ol class="workflow-steps">
+            <li><span class="step-num">1</span> AI confidence below threshold or farmer requests human help</li>
+            <li><span class="step-num">2</span> Escalation ticket created in MongoDB with full query context</li>
+            <li><span class="step-num">3</span> Agri officer sees ticket on dashboard with crop/region/season data</li>
+            <li><span class="step-num">4</span> Officer responds with expert advice</li>
+            <li><span class="step-num">5</span> Response delivered to farmer; feedback logged for model improvement</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Demo -->
+    <section id="demo" class="section section--demo reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">06</span>
+          <h2>Live Demo</h2>
+        </header>
+
+        <div class="demo-layout">
+          <div class="demo-video-wrap">
+            <video
+              id="demoVideo"
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              poster=""
+            >
+              <source src="assets/demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="demo-captions">
+            <h3>What to watch for</h3>
+            <article class="demo-caption-card">
+              <span class="demo-caption-card__label">Voice</span>
+              <p>Malayalam speech input transcribed by IndicSeamless — handles dialects and field noise.</p>
+            </article>
+            <article class="demo-caption-card">
+              <span class="demo-caption-card__label">Disease</span>
+              <p>Crop image analyzed for disease classification with localized treatment advice.</p>
+            </article>
+            <article class="demo-caption-card">
+              <span class="demo-caption-card__label">Advice</span>
+              <p>Context-aware RAG response tailored to crop, soil, region, and season.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Challenges -->
+    <section id="challenges" class="section reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">07</span>
+          <h2>Challenges &amp; Fixes</h2>
+        </header>
+
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <div class="challenge-card__problem">
+              <span class="challenge-card__tag">Problem</span>
+              <p>Field audio has background noise and Malayalam dialect variation</p>
+            </div>
+            <div class="challenge-card__fix">
+              <span class="challenge-card__tag challenge-card__tag--fix">Fix</span>
+              <p>noisereduce preprocessing + 10s chunk processing in IndicSeamless; float16 + device_map for GPU memory</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div class="challenge-card__problem">
+              <span class="challenge-card__tag">Problem</span>
+              <p>Cloud LLM (Gemini) — cost per query &amp; data privacy concerns</p>
+            </div>
+            <div class="challenge-card__fix">
+              <span class="challenge-card__tag challenge-card__tag--fix">Fix</span>
+              <p>Migrated to local Qwen3-8B via Ollama — zero API cost, on-prem inference, offline-capable</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div class="challenge-card__problem">
+              <span class="challenge-card__tag">Problem</span>
+              <p>Heavy ASR model exhausts GPU VRAM on long recordings</p>
+            </div>
+            <div class="challenge-card__fix">
+              <span class="challenge-card__tag challenge-card__tag--fix">Fix</span>
+              <p>torch.float16 precision, device_map=&quot;auto&quot; CPU/GPU split, async background jobs for large files</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div class="challenge-card__problem">
+              <span class="challenge-card__tag">Problem</span>
+              <p>Large audio files timeout on synchronous endpoints</p>
+            </div>
+            <div class="challenge-card__fix">
+              <span class="challenge-card__tag challenge-card__tag--fix">Fix</span>
+              <p>Dual endpoints: /transcribe-sync for short clips, /transcribe async with job status polling</p>
+            </div>
+          </article>
+          <article class="challenge-card">
+            <div class="challenge-card__problem">
+              <span class="challenge-card__tag">Problem</span>
+              <p>Diverse data types — structured accounts, chat logs, vector embeddings</p>
+            </div>
+            <div class="challenge-card__fix">
+              <span class="challenge-card__tag challenge-card__tag--fix">Fix</span>
+              <p>Polyglot persistence: PostgreSQL + MongoDB + Qdrant + Redis, orchestrated via Docker Compose</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Analytics & Cost -->
+    <section id="analytics" class="section section--analytics reveal">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">08</span>
+          <h2>Analytics &amp; Cost Optimization</h2>
+        </header>
+
+        <div class="metrics-grid">
+          <article class="metric-tile">
+            <span class="metric-tile__value">$0</span>
+            <span class="metric-tile__label">Per-token LLM cost</span>
+            <span class="metric-tile__detail">Local Qwen3-8B via Ollama</span>
+          </article>
+          <article class="metric-tile">
+            <span class="metric-tile__value">FP16</span>
+            <span class="metric-tile__label">Inference precision</span>
+            <span class="metric-tile__detail">Half VRAM for ASR + vision</span>
+          </article>
+          <article class="metric-tile">
+            <span class="metric-tile__value">10s</span>
+            <span class="metric-tile__label">Audio chunk size</span>
+            <span class="metric-tile__detail">Prevents OOM on long recordings</span>
+          </article>
+          <article class="metric-tile">
+            <span class="metric-tile__value">Redis</span>
+            <span class="metric-tile__label">Market rate cache</span>
+            <span class="metric-tile__detail">Reduces DB load on hot data</span>
+          </article>
+          <article class="metric-tile">
+            <span class="metric-tile__value">~10</span>
+            <span class="metric-tile__label">Docker services</span>
+            <span class="metric-tile__detail">Consistent dev/prod via Compose</span>
+          </article>
+          <article class="metric-tile">
+            <span class="metric-tile__value">0</span>
+            <span class="metric-tile__label">Cloud speech API calls</span>
+            <span class="metric-tile__detail">Whisper STT + Piper TTS local</span>
+          </article>
+        </div>
+
+        <p class="analytics-close">Cost-aware edge AI: local models, free/open APIs where possible, aggressive caching, and async job processing — built for rural connectivity and farmer data privacy.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>YieldUP is a demo / educational portfolio project. It is not a substitute for certified agricultural advice. Always consult local Krishi Bhavan officers for crop health decisions.</p>
+    <p class="site-footer__keys">Keyboard: press <kbd>1</kbd>–<kbd>8</kbd> to jump sections · <kbd>↑</kbd><kbd>↓</kbd> to navigate</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
